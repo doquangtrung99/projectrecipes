@@ -4,22 +4,19 @@ import bannerFood from '../../img/bannerFood.jpg'
 import '../../styles/overview.scss'
 import { useNavigate } from "react-router-dom"
 import useRecipe from '../hooks/useRecipe'
-import { useState } from "react"
 const OverViewPage = () => {
 
     const navigate = useNavigate()
     const { loadingState, recipeList } = useRecipe()
-
-    console.log(recipeList)
 
     return (
         <Flex
             height="100%"
         >
             <VStack
-                w="70%"
+                w={{ base: "100%", md: "97%", lg: "70%" }}
                 h="100%"
-                bg="#E0E0E0	"
+                bg="#E0E0E0"
             >
                 <VStack w="100%" h="35%">
                     <Box
@@ -57,7 +54,14 @@ const OverViewPage = () => {
                     >Based on the type of food you like
                     </Text>
                 </VStack>
-                <HStack h="100%" >
+                <HStack
+                    h="100%"
+                    w={{ base: "100%", lg: "auto" }}
+                    flexDirection={{ base: 'column', lg: "row" }}
+                    gap={2}
+                    overflowY="auto"
+                    className="overwrite"
+                >
                     {
                         loadingState !== 'loading' && recipeList && recipeList.length > 0 && recipeList.map((item, index) => {
                             if (index < 2) {
@@ -81,6 +85,7 @@ const OverViewPage = () => {
                 w="30%"
                 h="100%"
                 bg="#fff"
+                display={{ base: 'none', md: 'none', lg: 'block' }}
             >
                 Right
             </Box>

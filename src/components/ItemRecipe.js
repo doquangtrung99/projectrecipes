@@ -53,6 +53,7 @@ const ItemRecipe = ({ dishData, dish }) => {
             maxH="380px"
             overflowY="auto"
             overflowX="hidden"
+            className="overwrite"
         >
             {!isShow ?
                 <>
@@ -127,7 +128,7 @@ const ItemRecipe = ({ dishData, dish }) => {
                     </HStack>
                 </>
                 :
-                <VStack pl={5} pt={5}>
+                <VStack pl={5} pt={5} >
                     {dishData && dishData.recipes.length > 0 && dishData.recipes.map(item => {
                         return (
                             <Box>
@@ -138,11 +139,17 @@ const ItemRecipe = ({ dishData, dish }) => {
                             </Box>
                         )
                     })}
-                    {dish && dish.recipes.length > 0 && dishData.recipes.map(item => {
+                    {dish && dish.recipes.length > 0 && dish.recipes.map(item => {
                         return (
                             <Box>
-                                {item.content}
+                                <Text fontWeight="bold">
+                                    {item.step}
+                                </Text>
+                                <Box>
+                                    {item.content}
+                                </Box>
                             </Box>
+
                         )
                     })}
                     <Button

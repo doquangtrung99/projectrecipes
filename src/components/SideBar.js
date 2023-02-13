@@ -1,17 +1,52 @@
-import { Box, VStack } from '@chakra-ui/react'
-import { InfoOutlineIcon, SettingsIcon, CalendarIcon, StarIcon, AtSignIcon } from '@chakra-ui/icons'
+import { InfoOutlineIcon, CalendarIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { ItemSideBar } from '../components/index'
 import BackgroundSideBar from '../img/FoodBG.jpg'
-
+import {
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+    Box,
+    VStack
+} from '@chakra-ui/react'
 const SideBar = () => {
 
     return (
         <VStack
-            minW="350px"
-            h="100%"
+            minW={{ 'md': "250px", 'lg': '350px' }}
+            maxW={{ 'md': "250px", 'lg': '350px' }}
+            alignItems={{ base: 'flex-start' }}
+            ml={{ 'md': '15px' }}
+            h={{ lg: "100%" }}
             bg="#fff"
         >
-            <Box h="65%" w="100%" mt={5}>
+            <Box
+                display={{ lg: 'none', md: 'none' }}
+                w={{ base: '100%' }}
+            >
+                <Accordion allowToggle>
+                    <AccordionItem>
+                        <h2>
+                            <AccordionButton>
+                                <HamburgerIcon />
+                            </AccordionButton>
+                        </h2>
+                        <AccordionPanel pb={4}>
+                            <ItemSideBar
+                                icon={<InfoOutlineIcon />}
+                                content="Overview"
+                            />
+                            <ItemSideBar
+                                icon={<CalendarIcon />}
+                                content="Recipes"
+                            />
+                        </AccordionPanel>
+                    </AccordionItem>
+                </Accordion>
+            </Box>
+
+            <Box h="65%" w="100%" mt={5} display={{ base: 'none', md: 'block' }}>
                 <ItemSideBar
                     icon={<InfoOutlineIcon />}
                     content="Overview"
@@ -21,7 +56,7 @@ const SideBar = () => {
                     content="Recipes"
                 />
             </Box>
-            <Box h="55%" w="100%" >
+            <Box h="55%" w="100%" display={{ base: 'none', md: 'block', lg: 'block' }} >
                 <img
                     src={BackgroundSideBar}
                     alt="bgsidebar"

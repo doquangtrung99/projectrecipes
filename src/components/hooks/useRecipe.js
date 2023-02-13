@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Recipes } from '../../redux/slice/Recipe'
 import { useEffect } from 'react';
 
-const useRecipe = (reRender) => {
+const useRecipe = (reRender, filterOptions) => {
 
     const dispatch = useDispatch()
 
@@ -11,7 +11,7 @@ const useRecipe = (reRender) => {
 
     useEffect(() => {
         dispatch(Recipes.actions.getRecipes())
-    }, [reRender])
+    }, [reRender, filterOptions])
     return {
         recipeList,
         loadingState

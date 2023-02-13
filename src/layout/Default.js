@@ -22,13 +22,14 @@ const Default = ({ component }) => {
                     w="100%"
                     h="100%"
                     maxH="80vh"
-                    maxW="1200px"
+                    maxW={{ lg: "1300px" }}
+                    flexDirection={{ base: 'column', md: 'row', lg: 'row' }}
                 >
                     <SideBar />
                     <Box
                         flexGrow={1}
                         h="100%"
-                        overflowY="auto"
+                        overflowY="hidden"
                         overflowX="hidden"
                     >
                         {component}
