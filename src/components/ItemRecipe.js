@@ -31,7 +31,12 @@ export const ItemIngredient = ({ img, content, BG }) => {
 
 
             </Box>
-            <Box>
+            <Box
+                whiteSpace="nowrap"
+                textOverflow="ellipsis"
+                overflow="hidden"
+                w="70px"
+            >
                 {content.charAt(0).toUpperCase() + content.slice(1)}
             </Box>
         </VStack>

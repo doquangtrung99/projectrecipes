@@ -4,6 +4,9 @@ import bannerFood from '../../img/bannerFood.jpg'
 import '../../styles/overview.scss'
 import { useNavigate } from "react-router-dom"
 import useRecipe from '../hooks/useRecipe'
+import food from '../../img/food.jpg'
+import food1 from '../../img/food1.jpg'
+
 const OverViewPage = () => {
 
     const navigate = useNavigate()
@@ -37,10 +40,10 @@ const OverViewPage = () => {
                         />
                         <Text
                             position="absolute"
-                            top="0"
+                            top={{ base: "0", md: "10", lg: "0" }}
                             right="30%"
                             fontWeight="bold"
-                            fontSize="28px"
+                            fontSize={{ base: "14px", md: "28px", lg: "28px" }}
                             wordBreak="break-word"
                             pointerEvents="none"
                             w="130px"
@@ -81,14 +84,27 @@ const OverViewPage = () => {
                     }
                 </HStack>
             </VStack>
-            <Box
+            <VStack
                 w="30%"
                 h="100%"
                 bg="#fff"
                 display={{ base: 'none', md: 'none', lg: 'block' }}
             >
-                Right
-            </Box>
+                <Box
+                    backgroundImage={food}
+                    height="40%"
+                    w="100%"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                />
+                <Box
+                    backgroundImage={food1}
+                    height="60%"
+                    w="100%"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                />
+            </VStack>
         </Flex >
     )
 }

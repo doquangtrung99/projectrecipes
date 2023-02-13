@@ -56,12 +56,15 @@ const SideBar = () => {
                     content="Recipes"
                 />
             </Box>
-            <Box h="55%" w="100%" display={{ base: 'none', md: 'block', lg: 'block' }} >
-                <img
+            <Box
+                backgroundImage={BackgroundSideBar}
+                backgroundPosition="left"
+                h="150%" w="100%" display={{ base: 'none', md: 'block', lg: 'block' }} >
+                {/* <img
                     src={BackgroundSideBar}
                     alt="bgsidebar"
                     style={{ objectFit: "cover", height: "100%", width: "100%" }}
-                />
+                /> */}
             </Box>
         </VStack>
     )
