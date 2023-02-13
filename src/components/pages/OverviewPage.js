@@ -40,10 +40,10 @@ const OverViewPage = () => {
                         />
                         <Text
                             position="absolute"
-                            top={{ base: "0", md: "10", lg: "0" }}
+                            top={{ base: "0", md: "5", lg: "0" }}
                             right="30%"
                             fontWeight="bold"
-                            fontSize={{ base: "14px", md: "28px", lg: "28px" }}
+                            fontSize={{ base: "25px", md: "28px", lg: "28px" }}
                             wordBreak="break-word"
                             pointerEvents="none"
                             w="130px"
