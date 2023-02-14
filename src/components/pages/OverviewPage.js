@@ -60,7 +60,7 @@ const OverViewPage = () => {
                 <HStack
                     h="100%"
                     w={{ base: "100%", lg: "auto" }}
-                    flexDirection={{ base: 'column', lg: "row" }}
+                    flexDirection={{ base: 'column', lg: "column", xl: 'row' }}
                     gap={2}
                     overflowY="auto"
                     className="overwrite"
