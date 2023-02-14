@@ -78,9 +78,11 @@ const OverViewPage = () => {
                     }
                     {
                         loadingState === 'loading' &&
-                        <Spinner size="xl">
+                        <Flex flexDirection="column" alignItems="center" >
+                            <Spinner size="xl" />
+                            <Box fontWeight="bold">Loading ...</Box>
+                        </Flex>
 
-                        </Spinner>
                     }
                 </HStack>
             </VStack>

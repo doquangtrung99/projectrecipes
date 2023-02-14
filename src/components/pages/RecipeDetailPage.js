@@ -1,4 +1,4 @@
-import { HStack, Stack, Input, Button, Flex, Spinner } from "@chakra-ui/react"
+import { HStack, Stack, Input, Button, Flex, Spinner, Box } from "@chakra-ui/react"
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import { useState, useRef, useEffect } from "react"
 import ItemRecipe from "../ItemRecipe"
@@ -88,7 +88,7 @@ const RecipeDetailPage = () => {
             <HStack position="sticky" w="100%" top="0" zIndex="999" id="head"  >
                 <Input
                     ref={inputRef}
-                    placeholder="Search As Dish Name"
+                    placeholder="Search As Recipe Name"
                     bg="#fff"
                     _focus={{ boxShadow: "none" }}
                 />
@@ -133,8 +133,9 @@ const RecipeDetailPage = () => {
                     </Flex>
                 }
                 {loadingState === 'loading' &&
-                    <Flex justify="center" flexGrow="1">
+                    <Flex flexDirection="column" alignItems="center" flexGrow={1}>
                         <Spinner size="xl" />
+                        <Box fontWeight="bold">Loading ...</Box>
                     </Flex>
                 }
                 {/* {

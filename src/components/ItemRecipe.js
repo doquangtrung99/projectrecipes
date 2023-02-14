@@ -77,7 +77,7 @@ const ItemRecipe = ({ dishData, dish }) => {
                                 <Text fontWeight="bold" minW="200px"  >Ingredients</Text>
                             </Box>
                             <VStack>
-                                <Text>
+                                <Text textAlign="center" fontWeight="bold">
                                     {dishData && dishData.name}
                                     {dish && dish.name}
                                 </Text>
