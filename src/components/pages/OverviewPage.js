@@ -41,14 +41,14 @@ const OverViewPage = () => {
                         <Text
                             position="absolute"
                             top={{ base: "0", md: "5", lg: "0" }}
-                            right="30%"
+                            right="35%"
                             fontWeight="bold"
                             fontSize={{ base: "25px", md: "28px", lg: "28px" }}
                             wordBreak="break-word"
                             pointerEvents="none"
-                            w="130px"
+                            w="100px"
                         >
-                            Add Your Own Recipes
+                            See All Of Recipes
                         </Text>
                     </Box>
                     <Text
