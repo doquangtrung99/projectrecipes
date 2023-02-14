@@ -14,8 +14,9 @@ const RecipeDetailPage = () => {
     const [search, setSearch] = useState('')
     const [filterOptions, setFilterOptions] = useState()
     const { loadingState, recipeList } = useRecipe(search, filterOptions)
-    // const [arr, setArr] = useState([])
+    const [arr, setArr] = useState([])
     const inputRef = useRef()
+    const focusRef = useRef()
     let newArray = recipeList && recipeList.filter(item =>
         filterOptions ?
             filterOptions === 'Ingredients < 6' ? item.ingredients.length < 6 : item.recipes.length > 4
@@ -25,28 +26,22 @@ const RecipeDetailPage = () => {
     const handleFilter = (e) => {
         switch (e.target.innerText) {
             case "Ingredients < 6":
+                setArr(prev => [])
                 setFilterOptions(prev => e.target.innerText)
                 break;
             case "Tutorial steps > 4":
+                setArr(prev => [])
                 setFilterOptions(prev => e.target.innerText)
                 break;
-            // case "Ingredients includes socola":
+            case "Ingredients includes":
+                const someArr = recipeList.map((element) => {
+                    return { ...element, ingredients: element.ingredients.find((item) => item.name.toLowerCase().includes(focusRef.current.value)) ? element.ingredients : [] }
+                })
 
-            //     const someArr = recipeList.map((element) => {
-            //         return { ...element, ingredients: element.ingredients.filter((item) => item.name.toLowerCase().includes('socola')) }
-            //     })
+                const arrFilter = someArr.filter(item => item.ingredients.length > 0)
 
-            //     let newItem = someArr.map((item) => {
-            //         if (item.ingredients.length > 0) {
-            //             return { ...item }
-            //         }
-            //     })
-            //     newItem = newItem.filter(function (element) {
-            //         return element !== undefined;
-            //     });
-
-            //     setArr(prev => newItem)
-            //     break;
+                setArr(prev => arrFilter)
+                break;
             default:
                 break;
         }
@@ -93,6 +88,7 @@ const RecipeDetailPage = () => {
                     _focus={{ boxShadow: "none" }}
                 />
                 <Button onClick={() => {
+                    setArr(prev => [])
                     setFilterOptions('')
                     setSearch(prev => inputRef.current.value)
                 }}>
@@ -105,7 +101,15 @@ const RecipeDetailPage = () => {
                     <MenuList onClick={(e) => handleFilter(e)}>
                         <MenuItem fontWeight="bold">Ingredients &lt; 6</MenuItem>
                         <MenuItem fontWeight="bold">Tutorial steps &gt; 4</MenuItem>
-                        {/* <MenuItem fontWeight="bold">Ingredients includes socola</MenuItem> */}
+                        <MenuItem
+                            fontWeight="bold"
+                        >
+                            <Box onMouseOver={() => {
+                                focusRef.current.focus()
+                            }}>
+                                Ingredients includes<Input name="input" ref={focusRef} bg="#fff" size="sm" ml={2} maxW="100px" />
+                            </Box>
+                        </MenuItem>
                     </MenuList>
                 </Menu>
             </HStack>
@@ -119,7 +123,7 @@ const RecipeDetailPage = () => {
                 justifyItems={{ md: 'flex-start' }}
             >
                 {
-                    loadingState !== 'loading' && newArray && newArray.length > 0 && newArray.map((item) => {
+                    loadingState !== 'loading' && arr.length <= 0 && newArray && newArray.length > 0 && newArray.map((item) => {
                         return (
                             <ItemRecipe
                                 dish={item}
@@ -138,7 +142,7 @@ const RecipeDetailPage = () => {
                         <Box fontWeight="bold">Loading ...</Box>
                     </Flex>
                 }
-                {/* {
+                {
                     arr && arr.length > 0 && arr.map(item => {
                         return (
                             <ItemRecipe
@@ -146,7 +150,7 @@ const RecipeDetailPage = () => {
                             />
                         )
                     })
-                } */}
+                }
             </HStack>
         </Stack>
 
